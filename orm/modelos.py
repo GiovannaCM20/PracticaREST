@@ -3,6 +3,7 @@ from sqlalchemy import Column, String, Integer, DateTime, ForeignKey, Float
 import datetime
 
 class alumnos(BaseClass):
+    __tablename__ ='alumnos'
     id=Column(Integer, primary_key=True)
     nombre=Column(String(100))
     edad=Column(Integer)
@@ -14,12 +15,14 @@ class alumnos(BaseClass):
     fecha_registro=Column(DateTime(timezone=True),default=datetime.datetime.now)
 
 class calificaciones(BaseClass):
+    __tablename__ ='calificaciones'
     id=Column(Integer, primary_key=True)
     id_alumno=Column(Integer, ForeignKey(alumnos.id))
     uea=Column(String(100))
     calificacion=Column(String(100))
 
 class fotos(BaseClass):
+    __tablename__ ='fotos'
     id=Column(Integer, primary_key=True)
     id_alumno=Column(Integer, ForeignKey(alumnos.id))
     titulo=Column(String(100))
